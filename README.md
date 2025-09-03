@@ -1,39 +1,39 @@
-### Documentation is included in the Documentation folder ###
+# ACME_CalculateSecurityHash_2_Performer_WorkItemsProcessing
 
+## 📌 Project Overview
+This UiPath project is the **Performer** part of the ACME Calculate Client Security Hash automation.  
+It retrieves **Work Items (WI5)** from an **Orchestrator Queue**, logs into the **ACME System 1 portal**, and processes each item by calculating and submitting the Client Security Hash.
 
-### REFrameWork Template ###
-**Robotic Enterprise Framework**
+---
 
-* Built on top of *Transactional Business Process* template
-* Uses *State Machine* layout for the phases of automation project
-* Offers high level logging, exception handling and recovery
-* Keeps external settings in *Config.xlsx* file and Orchestrator assets
-* Pulls credentials from Orchestrator assets and *Windows Credential Manager*
-* Gets transaction data from Orchestrator queue and updates back status
-* Takes screenshots in case of system exceptions
+## 🛠 Features
+- Built on **UiPath REFramework**.
+- Fetches transactions from Orchestrator Queue.
+- Logs into **ACME System 1** automatically.
+- Calculates and submits the **Client Security Hash**.
+- Implements retry, logging, and exception handling.
 
+---
 
-### How It Works ###
+## 📂 Project Structure
+- **Main.xaml** → Entry point of the automation.
+- **Framework folder** → REFramework state machine (Init, GetTransactionData, Process, End).
+- **Data folder** → Config file (`Config.xlsx`) containing Orchestrator assets and settings.
 
-1. **INITIALIZE PROCESS**
- + ./Framework/*InitiAllSettings* - Load configuration data from Config.xlsx file and from assets
- + ./Framework/*GetAppCredential* - Retrieve credentials from Orchestrator assets or local Windows Credential Manager
- + ./Framework/*InitiAllApplications* - Open and login to applications used throughout the process
+---
 
-2. **GET TRANSACTION DATA**
- + ./Framework/*GetTransactionData* - Fetches transactions from an Orchestrator queue defined by Config("OrchestratorQueueName") or any other configured data source
+## 📋 Requirements
+- UiPath Studio **2022.10+** (or higher).
+- Access to **ACME System 1** demo site.
+- UiPath Orchestrator account with a configured Queue.
+- Required packages:
+  - UiPath.Excel.Activities
+  - UiPath.System.Activities
+  - UiPath.UIAutomation.Activities
 
-3. **PROCESS TRANSACTION**
- + *Process* - Process trasaction and invoke other workflows related to the process being automated 
- + ./Framework/*SetTransactionStatus* - Updates the status of the processed transaction (Orchestrator transactions by default): Success, Business Rule Exception or System Exception
+---
 
-4. **END PROCESS**
- + ./Framework/*CloseAllApplications* - Logs out and closes applications used throughout the process
-
-
-### For New Project ###
-
-1. Check the Config.xlsx file and add/customize any required fields and values
-2. Implement InitiAllApplications.xaml and CloseAllApplicatoins.xaml workflows, linking them in the Config.xlsx fields
-3. Implement GetTransactionData.xaml and SetTransactionStatus.xaml according to the transaction type being used (Orchestrator queues by default)
-4. Implement Process.xaml workflow and invoke other workflows related to the process being automated
+## 🚀 How to Run
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/YourUsername/ACME_CalculateSecurityHash_2_Performer_WorkItemsProcessing.git
